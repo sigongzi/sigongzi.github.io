@@ -22,8 +22,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-          fetch-depth: 0
+          submodules: recursive  # 获取 Hugo 主题
+          fetch-depth: 0         # 获取全部历史记录以便于 lastmod 等功能
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -39,10 +39,9 @@ jobs:
           hugo --minify
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./public
-          name: github-pages-${{ github.run_id }}
 
   deploy:
     environment:
@@ -53,4 +52,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
