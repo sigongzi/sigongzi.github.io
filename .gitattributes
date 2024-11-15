@@ -1,0 +1,5 @@
+# 将所有文本文件的换行符标准化为 LF
+* text=auto eol=lf
+
+# 对于 Windows 批处理文件保持 CRLF
+*.bat text eol=crlf
