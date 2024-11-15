@@ -1,0 +1,83 @@
+baseURL = "https://sigongzi.github.io/"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
+theme = "stack"
+paginate = 5
+title = "海鸥的码头"
+
+[languages.zh-cn]
+languageName = "中文"
+title = "海鸥的码头
+
+[params]
+mainSections = ["post"]
+featuredImageField = "image"
+rssFullContent = true
+
+[params.sidebar]
+emoji = "🍟"
+subtitle = "来这里整点薯条"
+
+[params.sidebar.avatar]
+enabled = true
+local = true
+src = "img/avatar.png"
+
+[params.article]
+math = true
+toc = true
+readingTime = true
+
+# 首页小部件配置
+[[params.widgets.homepage]]
+type = "search"
+
+[[params.widgets.homepage]]
+type = "archives"
+[params.widgets.homepage.params]
+limit = 5
+
+[[params.widgets.homepage]]
+type = "categories"
+[params.widgets.homepage.params]
+limit = 10
+
+[[params.widgets.homepage]]
+type = "tag-cloud"
+[params.widgets.homepage.params]
+limit = 20
+
+# 导航菜单配置
+[[menu.main]]
+identifier = "home"
+name = "首页"
+url = "/"
+weight = -100
+[menu.main.params]
+icon = "home"
+
+[[menu.main]]
+identifier = "archives"
+name = "归档"
+url = "/archives"
+weight = -90
+[menu.main.params]
+icon = "archives"
+
+[[menu.main]]
+identifier = "search"
+name = "搜索"
+url = "/search"
+weight = -80
+[menu.main.params]
+icon = "search"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+series = "series"
+
+[markup.highlight]
+noClasses = false
+lineNos = true
+style = "dracula"
