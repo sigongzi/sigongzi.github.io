@@ -2,19 +2,15 @@
 name: Deploy Hugo site to Pages
 
 on:
-  # 推送到 main 分支时触发部署
   push:
     branches: [main]
-  # 允许手动触发部署
   workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 的权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 只允许同时进行一次部署
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -26,11 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # 获取 Hugo 主题
-          fetch-depth: 0         # 获取全部历史记录以便于 lastmod 等功能
+          submodules: recursive
+          fetch-depth: 0
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: gohugoio/hugo-setup@v1
         with:
           hugo-version: 'latest'
           extended: true
@@ -43,7 +39,7 @@ jobs:
           hugo --minify
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
@@ -56,4 +52,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
